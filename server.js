@@ -15,7 +15,10 @@ const port = process.env.PORT || 9000;
 
 // CORS configuration
 const corsOptions = {
-  origin: "https://season-collection-admin.vercel.app", // Allow only your frontend to make requests
+  origin: [
+    "http://localhost:3000",
+    "https://season-collection-admin.vercel.app",
+  ], // Allow only your frontend to make requests
   methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
 };
