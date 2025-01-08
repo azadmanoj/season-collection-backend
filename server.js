@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const jewelryRoutes = require("./routes/jewelryRoutes");
 const authRoutes = require("./routes/authRoutes");
-const config = require("./lib/mongodb");
 const cors = require("cors");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
@@ -14,7 +13,15 @@ const dbURI = process.env.MONGODB_URI;
 const app = express();
 const port = process.env.PORT || 9000;
 
-app.use(cors()); // Enable CORS for all routes
+// CORS configuration
+const corsOptions = {
+  origin: "https://season-collection-admin.vercel.app", // Allow only your frontend to make requests
+  methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
+};
+
+app.use(cors(corsOptions)); // Apply CORS middleware
+
 app.use(helmet()); // Use helmet for added security (optional)
 
 // Middleware to parse JSON
