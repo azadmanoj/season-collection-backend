@@ -10,6 +10,8 @@ exports.createJewelry = async (req, res) => {
     collection,
     category,
     wishList,
+    status,
+    published,
     addToCart,
     stock,
   } = req.body;
@@ -21,6 +23,8 @@ exports.createJewelry = async (req, res) => {
     collection,
     category,
     wishList,
+    status,
+    published,
     addToCart,
     stock,
   });
@@ -73,7 +77,7 @@ exports.updateJewelry = async (req, res) => {
 // Delete jewelry by ID
 exports.deleteJewelry = async (req, res) => {
   try {
-    const deletedJewelry = await Jewelry.findByIdAndDelete(req.params.id);
+    const deletedJewelry = await Jewelry.findOneAndDelete(req.params.id);
     if (!deletedJewelry)
       return res.status(404).json({ message: "Jewelry not found" });
     res.json({ message: "Jewelry deleted" });

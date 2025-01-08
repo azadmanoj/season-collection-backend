@@ -12,6 +12,8 @@ const jewelrySchema = new mongoose.Schema(
     category: { type: String, required: true },
     collection: { type: String },
     wishList: { type: Boolean },
+    status: { type: String },
+    published: { type: Boolean },
     addToCart: { type: Boolean },
     stock: { type: Number, default: 1 },
 
