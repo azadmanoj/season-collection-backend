@@ -18,6 +18,7 @@ const corsOptions = {
   origin: [
     "http://localhost:3000",
     "https://season-collection-admin.vercel.app",
+    "https://season-collections.vercel.app",
   ], // Allow only your frontend to make requests
   methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
