@@ -49,7 +49,7 @@ const signUp = async (req, res) => {
       firstName,
       lastName, // Store the first name separately
       phoneNumber,
-      User,
+      profile: "User",
       address,
       userId, // Add the 4-digit UUID as userId
     });
