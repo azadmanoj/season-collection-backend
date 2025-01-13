@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema(
     firstName: { type: String, required: true },
     lastName: { type: String },
     phoneNumber: { type: String },
+    Profile: { type: "User" },
     address: { type: String },
     userId: { type: String, unique: true },
     id: { type: String, default: () => uuidv4(), unique: true },
