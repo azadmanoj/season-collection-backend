@@ -1,10 +1,12 @@
 const Jewelry = require("../models/jewelryModel");
 
-// Create a new jewelry item
+// Controller method for creating jewelry (handling Base64 images)
 exports.createJewelry = async (req, res) => {
+  console.log("🚀 ~ exports.createJewelry= ~ req:", req.body); // Log the request body for debugging
+
+  // Extract image data and other jewelry fields from the body
   const {
     title,
-    image,
     price,
     description,
     collection,
@@ -14,10 +16,18 @@ exports.createJewelry = async (req, res) => {
     published,
     addToCart,
     stock,
+    images, // Expecting Base64 encoded images in the 'images' field
   } = req.body;
+
+  // Check if images are provided
+  if (!images || images.length === 0) {
+    return res.status(400).json({ message: "At least one image is required" });
+  }
+
+  // Create a new jewelry item
   const jewelry = new Jewelry({
     title,
-    image,
+    images, // Store the Base64 image data directly
     price,
     description,
     collection,
@@ -30,8 +40,9 @@ exports.createJewelry = async (req, res) => {
   });
 
   try {
+    // Save the jewelry item to the database
     const newJewelry = await jewelry.save();
-    res.status(201).json(newJewelry);
+    res.status(201).json(newJewelry); // Respond with the newly created jewelry
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

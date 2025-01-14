@@ -6,7 +6,7 @@ const jewelrySchema = new mongoose.Schema(
   {
     id: { type: String, default: () => uuidv4(), unique: true },
     title: { type: String, required: true },
-    image: { type: [String] },
+    images: { type: [String] },
     price: { type: Number, required: true },
     description: { type: String },
     category: { type: String, required: true },
