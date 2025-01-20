@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const jewelryRoutes = require("./routes/jewelryRoutes");
 const authRoutes = require("./routes/authRoutes");
+const ordersRoutes = require("./routes/ordersRoutes");
 const cors = require("cors");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
@@ -41,6 +42,7 @@ app.use((err, req, res, next) => {
 
 // Routes
 app.use("/api/jewelry", jewelryRoutes);
+app.use("/api/orders", ordersRoutes);
 
 app.use("/api/auth", authRoutes);
 // MongoDB Connection

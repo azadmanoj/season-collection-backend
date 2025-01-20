@@ -2,7 +2,6 @@ const Jewelry = require("../models/jewelryModel");
 
 // Controller method for creating jewelry (handling Base64 images)
 exports.createJewelry = async (req, res) => {
-  console.log("🚀 ~ exports.createJewelry= ~ req:", req.body); // Log the request body for debugging
 
   // Extract image data and other jewelry fields from the body
   const {
