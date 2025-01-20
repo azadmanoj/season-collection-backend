@@ -6,6 +6,7 @@ exports.createOrders = async (req, res) => {
   const {
     orderId,
     orderTime,
+    userId,
     customerName,
     paymentMethod,
     totalAmount,
@@ -19,6 +20,7 @@ exports.createOrders = async (req, res) => {
   const orders = new Orders({
     orderId,
     orderTime,
+    userId,
     customerName,
     paymentMethod,
     totalAmount,
@@ -51,6 +53,17 @@ exports.getAllOrders = async (req, res) => {
 exports.getOrdersById = async (req, res) => {
   try {
     const orders = await Orders.findOne({ id: req.params.id });
+    if (!orders) return res.status(404).json({ message: "Orders not found" });
+    res.json(orders);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Get Orders by User ID
+exports.getOrdersById = async (req, res) => {
+  try {
+    const orders = await Orders.findOne({ id: req.params.userId });
     if (!orders) return res.status(404).json({ message: "Orders not found" });
     res.json(orders);
   } catch (error) {
