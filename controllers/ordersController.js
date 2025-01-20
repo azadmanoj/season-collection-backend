@@ -77,7 +77,7 @@ exports.getOrdersById = async (req, res) => {
 exports.updateOrders = async (req, res) => {
   try {
     const updatedOrders = await Orders.findOneAndUpdate(
-      { id: req.params.id }, // Query by productId
+      { id: req.params.orderId }, // Query by productId
       req.body,
       { new: true } // Return the updated document
     );
