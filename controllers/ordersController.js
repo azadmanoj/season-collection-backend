@@ -13,6 +13,7 @@ exports.createOrders = async (req, res) => {
     utrNumber,
     utrStatus,
     orderStatus,
+    shippingDetails,
     items,
   } = req.body;
 
@@ -27,6 +28,7 @@ exports.createOrders = async (req, res) => {
     utrNumber,
     utrStatus,
     orderStatus,
+    shippingDetails,
     items,
   });
 
