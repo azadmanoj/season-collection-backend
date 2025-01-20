@@ -63,7 +63,7 @@ exports.getOrdersById = async (req, res) => {
 // Get Orders by User ID
 exports.getOrdersById = async (req, res) => {
   try {
-    const orders = await Orders.findOne({ id: req.params.userId });
+    const orders = await Orders.find({ id: req.params.userId });
     if (!orders) return res.status(404).json({ message: "Orders not found" });
     res.json(orders);
   } catch (error) {
