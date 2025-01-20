@@ -13,6 +13,12 @@ const ordersSchema = new mongoose.Schema(
     utrStatus: { type: String },
     orderStatus: { type: String },
     items: [{ type: Object }],
+    shippingDetails: {
+      name: { type: String },
+      address: { type: String },
+      city: { type: String },
+      zipCode: { type: String },
+    },
   },
   { timestamps: true }
 );
